@@ -22,20 +22,23 @@ userRouter.get("/all", isAuth, (req,res) => {
 })
 
 //login user
-userRouter.post("/login", async (req, res) => {
-  User.findOne(req.body).then((user)=>{
+userRouter.post("/user/login", async (req, res) => {
+  //console.log('hello login')
+  const  emailUser  = req.body.emailUser
+  const  passwordUser = req.body.passwordUser
+  Users.findOne({emailUser}).then((user)=>{
     console.log(user)
     if (!user) {
         return res.json({ message: "User doesn't exist" });
     } else {
-        if (user.password !== user.password) {
+        if (passwordUser !== user.passwordUser) {
             return res.json({ message: "Password Incorrect" });
     }
   }
     const payload = {
-        email: user.email,
-        name: user.name,
-        password: user.password
+        emailUser: user.emailUser,
+        nameUser: user.nameUser,
+        passwordUser: user.passwordUser
     }
     jwt.sign(payload, "secret", (err, token) => {
         if (err) console.log(err);
@@ -43,6 +46,7 @@ userRouter.post("/login", async (req, res) => {
     })
   })
 })
+
 
 
 module.exports = userRouter
