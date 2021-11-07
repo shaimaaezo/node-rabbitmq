@@ -2,3 +2,12 @@
 - sender have send_queue to sent user info to reciver
 - reciver will have consumer to recive user post and save it in mongodb
 - reciver will have get api to get all users from mongose
+
+database link: mongod --dbpath=data --bind_ip 127.0.0.1
+
+{
+    "nameUser":"user12",
+    "passwordUser":"user12",
+    "emailUser":"g@g.com",
+    "phoneNumber":"yyyyyy"
+}
