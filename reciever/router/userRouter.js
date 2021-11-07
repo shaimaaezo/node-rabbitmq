@@ -22,7 +22,7 @@ userRouter.get("/all", isAuth, (req,res) => {
 })
 
 //login user
-userRouter.post("/user/login", async (req, res) => {
+userRouter.post("/login", async (req, res) => {
   //console.log('hello login')
   const  emailUser  = req.body.emailUser
   const  passwordUser = req.body.passwordUser
